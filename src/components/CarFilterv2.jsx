@@ -93,6 +93,7 @@ const CarFilter = ({ filterOptions, setFilterOptions, ...props }) => {
         </Typography>
         <div style={{ padding: '0 1rem' }} >
           <Slider
+            disableSwap
             getAriaLabel={() => "Model year"}
             value={[filterOptions.minModelYear, filterOptions.maxModelYear]}
             onChange={(e, value, thumb) => setFilterOptions(prev => ({ ...prev, minModelYear: value[0], maxModelYear: value[1] }))}
@@ -102,6 +103,18 @@ const CarFilter = ({ filterOptions, setFilterOptions, ...props }) => {
           />
         </div>
       </Box>
+      <TextField
+        label='Min model year'
+        fullWidth
+        value={filterOptions.minModelYear || ''}
+        onChange={e => setFilterOptions(prev => ({ ...prev, minModelYear: e.target.value }))}
+      />
+      <TextField
+        label='Max model year'
+        fullWidth
+        value={filterOptions.maxModelYear || ''}
+        onChange={e => setFilterOptions(prev => ({ ...prev, maxModelYear: e.target.value }))}
+      />
     </Stack>
   );
 }
